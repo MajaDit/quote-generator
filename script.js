@@ -30,7 +30,7 @@ function newQuote() {
   } else {
     quoteAuthor.textContent = quote.author;
   }
-  // Check the quote lenght to determine the styling (smaller or bigger)
+  // Check the quote length to determine the styling (smaller or bigger)
   if (quote.text.length > 100) {
     quoteText.classList.add("long-quote");
   } else {
