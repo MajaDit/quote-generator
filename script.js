@@ -1,6 +1,6 @@
 const quoteContainer = document.getElementById("quote-container");
 const quoteText = document.getElementById("quote");
-const author = document.getElementById("author");
+const quoteAuthor = document.getElementById("author");
 const twitterBtn = document.getElementById("twitter");
 const newQuoteBtn = document.getElementById("new-quote");
 
@@ -10,7 +10,18 @@ let apiQuotes = [];
 function newQuote() {
   // pick a random quote from apiQuotes array
   const quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)];
-  author.textContent = quote.author;
+  // Check if author exist and if not replace null with 'Unknown'
+  if (!quote.author) {
+    quoteAuthor.textContent = "Unknown";
+  } else {
+    quoteAuthor.textContent = quote.author;
+  }
+  // Check the quote lenght to determine the styling (smaller or bigger)
+  if (quote.text.length > 100) {
+    quoteText.classList.add("long-quote");
+  } else {
+    quoteText.classList.remove("long-quote");
+  }
   quoteText.textContent = quote.text;
 }
 
